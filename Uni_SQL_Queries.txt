@@ -50,9 +50,12 @@ Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono
       ORDER BY students.name ASC   //   ORDER BY students.surname ASC
 
 Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
-    ↳ SELECT
+    ↳ SELECT degrees.name, courses.name, courses.description, teachers.name, teachers.surname FROM `degrees`
+      LEFT JOIN `courses` ON courses.degree_id = degrees.id
+      LEFT JOIN `course_teacher` ON course_teacher.course_id = courses.id
+      LEFT JOIN `teachers` ON course_teacher.teacher_id = teachers.id
 
-Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (5)
     ↳ SELECT
 
 BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
